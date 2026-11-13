@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>목운중학교 3학년 7반 학부모 의견 수합</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #F2E8D5;
+    --bg-deep: #E8DBC2;
+    --paper: #FFFBF2;
+    --ink: #4B3F35;
+    --muted: #8A7B6B;
+    --line: #E3D5BE;
+    --sage: #6E9A72;
+    --sage-dark: #557D5A;
+    --sage-soft: #DFEBD8;
+    --sage-ink: #3F6B47;
+    --butter: #E2B04A;
+    --butter-soft: #FAEBC4;
+    --butter-ink: #85601A;
+    --rose: #C46F68;
+    --rose-dark: #A3564F;
+    --stone-soft: #ECE3D5;
+    --stone-ink: #857868;
+    --shadow: 0 12px 30px -16px rgba(110, 80, 40, .32);
+    --r-lg: 32px;
+    --r-md: 22px;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    word-break: keep-all;
+  }
+  h1, h2, h3, .jua { font-family: 'Jua', 'Gowun Dodum', sans-serif; font-weight: 400; }
+  button { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid #8DB38F; outline-offset: 2px; }
+
+  /* 배경의 부드러운 도형 */
+  .blobs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .blobs span { position: absolute; display: block; }
+  .b1 { width: 440px; height: 400px; background: #F5D8B8; top: -160px; left: -140px; opacity: .75;
+        border-radius: 58% 42% 63% 37% / 46% 55% 45% 54%; animation: drift 18s ease-in-out infinite alternate; }
+  .b2 { width: 380px; height: 360px; background: #D7E5CC; top: 140px; right: -170px; opacity: .8;
+        border-radius: 41% 59% 38% 62% / 57% 39% 61% 43%; animation: drift 22s ease-in-out infinite alternate-reverse; }
+  .b3 { width: 320px; height: 320px; background: #F4E3AE; bottom: -140px; left: 10%; opacity: .6;
+        border-radius: 63% 37% 54% 46% / 38% 58% 42% 62%; animation: drift 26s ease-in-out infinite alternate; }
+  @keyframes drift { to { transform: translate(24px, 18px) rotate(8deg); } }
+
+  .wrap { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 40px 20px 64px; }
+
+  /* 머리글 */
+  .hero { text-align: center; padding: 20px 8px 40px; }
+  .stamp { display: inline-flex; align-items: center; gap: 8px; background: var(--paper); border-radius: 999px;
+           padding: 6px 16px 6px 6px; font-size: 14px; color: var(--muted); box-shadow: var(--shadow); }
+  .hero h1 { font-size: clamp(30px, 6.4vw, 52px); line-height: 1.22; margin: 20px 0 14px; letter-spacing: -0.01em; }
+  .hero p { color: var(--muted); margin: 0 auto; max-width: 34em; }
+
+  .in-detail .hero { padding: 4px 8px 22px; }
+  .in-detail .hero p { display: none; }
+  .in-detail .hero h1 { font-size: clamp(22px, 4.2vw, 30px); margin: 12px 0 0; }
+
+  .demo { max-width: 760px; margin: 0 auto 24px; background: var(--paper); border: 2px dashed var(--butter);
+          color: var(--butter-ink); border-radius: var(--r-md); padding: 12px 18px; font-size: 14px; text-align: center; }
+
+  /* 버튼 */
+  .btn { border: 0; cursor: pointer; border-radius: 999px; padding: 10px 18px; background: var(--paper);
+         box-shadow: 0 3px 0 var(--line); display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+         transition: transform .12s, background-color .2s, box-shadow .12s; }
+  .btn:hover { background: #fff; }
+  .btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--line); }
+  .btn.primary { background: var(--sage); color: #fff; box-shadow: 0 3px 0 var(--sage-dark); }
+  .btn.primary:hover { background: #79A57D; }
+  .btn.danger { background: var(--rose); color: #fff; box-shadow: 0 3px 0 var(--rose-dark); }
+  .btn.danger:hover { background: #CD7A73; }
+  .btn.on { background: var(--ink); color: var(--paper); box-shadow: 0 3px 0 #2F2720; }
+  .btn.ghost { background: transparent; box-shadow: none; color: var(--muted); }
+  .btn.ghost:hover { background: rgba(255, 251, 242, .7); }
+  .btn.small { padding: 7px 14px; font-size: 14px; }
+  .btn.block { width: 100%; padding: 14px; font-size: 17px; }
+  .btn[disabled] { opacity: .5; cursor: not-allowed; transform: none; }
+  .linklike { background: none; border: 0; padding: 4px 0; color: var(--muted); text-decoration: underline;
+              text-underline-offset: 3px; cursor: pointer; font-size: 14px; }
+
+  /* 목록 */
+  .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+  .toolbar h2 { font-size: 26px; margin: 0; }
+  .tools { display: flex; gap: 8px; flex-wrap: wrap; }
+  .notice { background: var(--butter-soft); color: var(--butter-ink); border-radius: var(--r-md); padding: 12px 18px; margin-bottom: 16px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+  .card { background: var(--paper); border-radius: var(--r-lg); padding: 22px 22px 20px; box-shadow: var(--shadow);
+          display: flex; flex-direction: column; gap: 10px; cursor: pointer; border: 2px solid transparent;
+          transition: border-color .2s; }
+  .card:hover { border-color: var(--bg-deep); }
+  .card.closed { background: #FAF4E8; }
+  .card.closed h3 { color: var(--muted); }
+  .editing .card { cursor: default; border-color: var(--butter-soft); }
+  .card-top { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .pill { border-radius: 999px; padding: 3px 12px; font-size: 13px; }
+  .pill.open { background: var(--sage-soft); color: var(--sage-ink); }
+  .pill.closed { background: var(--stone-soft); color: var(--stone-ink); }
+  .tag { font-size: 13px; color: var(--muted); padding: 2px 10px; border-radius: 999px; border: 1.5px dashed var(--line); }
+  .card h3 { font-size: 22px; margin: 2px 0 0; line-height: 1.35; }
+  .card-content { color: var(--muted); margin: 0; white-space: pre-line; overflow: hidden;
+                  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+  .progress { margin-top: auto; display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); padding-top: 6px; }
+  .bar { flex: 1; height: 10px; border-radius: 999px; background: var(--bg); overflow: hidden; }
+  .bar i { display: block; height: 100%; border-radius: inherit; background: var(--sage); transition: width .4s; }
+  .closed .bar i { background: #BFB2A0; }
+  .card-actions { display: flex; gap: 8px; padding-top: 12px; border-top: 1.5px dashed var(--line); }
+  .card-actions .btn { flex: 1; background: var(--bg); box-shadow: none; }
+  .card-actions .btn.danger-text { color: var(--rose-dark); }
+
+  .empty { grid-column: 1 / -1; text-align: center; background: var(--paper); border-radius: var(--r-lg);
+           padding: 48px 20px; color: var(--muted); box-shadow: var(--shadow); }
+  .empty h3 { color: var(--ink); font-size: 22px; margin: 0 0 6px; }
+  .empty p { margin: 0 0 16px; }
+  .skel { height: 200px; border-radius: var(--r-lg);
+          background: linear-gradient(100deg, var(--paper) 30%, #FFF4E0 50%, var(--paper) 70%);
+          background-size: 300% 100%; animation: shimmer 1.4s infinite linear; }
+  @keyframes shimmer { from { background-position: 100% 0; } to { background-position: 0 0; } }
+
+  /* 조사 상세 */
+  .detail { max-width: 760px; margin: 0 auto; }
+  .back { margin: 0 0 12px -8px; }
+  .paper { background: var(--paper); border-radius: var(--r-lg); box-shadow: var(--shadow); padding: 26px; margin-bottom: 18px; }
+  .detail-head h2 { font-size: clamp(25px, 4.6vw, 34px); margin: 12px 0 8px; line-height: 1.3; }
+  .detail-content { white-space: pre-wrap; margin: 0 0 12px; }
+  .list-head { display: flex; justify-content: space-between; align-items: baseline; gap: 4px 12px; flex-wrap: wrap; margin-bottom: 14px; }
+  .list-head h3 { font-size: 22px; margin: 0; }
+  .hint { color: var(--muted); font-size: 14px; margin: 0; }
+  .students { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .student { width: 100%; border: 0; background: var(--bg); border-radius: 18px; padding: 11px 12px;
+             display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; text-align: left;
+             cursor: pointer; transition: background-color .15s; }
+  .student:hover:not([disabled]) { background: var(--bg-deep); }
+  .student[disabled] { cursor: default; }
+  .sid { font-variant-numeric: tabular-nums; background: var(--paper); border-radius: 12px; padding: 3px 10px;
+         font-size: 14px; color: var(--muted); }
+  .sname { font-size: 17px; min-width: 0; }
+  .ans { display: block; font-size: 14px; color: var(--sage-ink); margin-top: 2px; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .status { border-radius: 999px; padding: 4px 13px; font-size: 14px; white-space: nowrap; }
+  .status.done { background: var(--sage-soft); color: var(--sage-ink); }
+  .status.todo { background: var(--butter-soft); color: var(--butter-ink); }
+  .teacher-link { text-align: right; margin-top: 14px; }
+  .sum-row { display: grid; grid-template-columns: minmax(70px, 180px) 1fr 52px; gap: 12px; align-items: center; margin: 10px 0; }
+  .sum-row b { font-weight: 400; text-align: right; color: var(--muted); }
+
+  /* 팝업 */
+  .overlay { position: fixed; inset: 0; background: rgba(75, 63, 53, .32); backdrop-filter: blur(3px);
+             -webkit-backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center;
+             padding: 20px; z-index: 50; animation: fade .18s ease; }
+  .modal { background: var(--paper); border-radius: 30px; width: min(440px, 100%); max-height: calc(100dvh - 40px);
+           overflow: auto; padding: 30px 26px 26px; position: relative; animation: pop .24s cubic-bezier(.2, .9, .3, 1.15); }
+  .modal.wide { width: min(560px, 100%); }
+  .modal h3 { font-size: 25px; margin: 0 0 6px; padding-right: 34px; line-height: 1.3; }
+  .modal p { margin: 0 0 12px; }
+  .x { position: absolute; top: 16px; right: 16px; width: 38px; height: 38px; border-radius: 50%; border: 0;
+       background: var(--bg); font-size: 22px; line-height: 1; cursor: pointer; color: var(--muted); }
+  @keyframes fade { from { opacity: 0; } }
+  @keyframes pop { from { opacity: 0; transform: translateY(14px) scale(.97); } }
+  .muted { color: var(--muted); }
+  .small { font-size: 14px; }
+  .q { background: var(--bg); border-radius: 16px; padding: 10px 14px; }
+  .note { background: var(--butter-soft); color: var(--butter-ink); border-radius: 16px; padding: 10px 14px; font-size: 14px; }
+  .stack { display: flex; flex-direction: column; gap: 14px; }
+  .row-end { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+  input[type=text], input[type=password], textarea {
+    font: inherit; color: var(--ink); background: var(--bg); border: 2px solid transparent; border-radius: 16px;
+    padding: 12px 14px; width: 100%; resize: vertical; }
+  input[type=text]:focus, input[type=password]:focus, textarea:focus { outline: none; border-color: #A9C7A5; background: #fff; }
+  .pin-input { text-align: center; font-family: 'Jua', sans-serif; font-size: 32px !important;
+               letter-spacing: .45em; padding-left: calc(14px + .45em) !important; }
+  .err { color: #B04E47; margin: 0 !important; min-height: 1.4em; font-size: 14px; }
+  .field > span:first-child { display: block; font-size: 14px; color: var(--muted); margin-bottom: 6px; }
+  .seg { display: flex; gap: 6px; flex-wrap: wrap; }
+  .seg label { flex: 1; position: relative; }
+  .seg input, .opt input { position: absolute; opacity: 0; pointer-events: none; }
+  .seg span { display: block; text-align: center; padding: 10px 8px; border-radius: 14px; background: var(--bg);
+              cursor: pointer; min-width: 92px; transition: background-color .15s; }
+  .seg input:checked + span { background: var(--ink); color: var(--paper); }
+  .seg input:focus-visible + span, .opt input:focus-visible + span { outline: 3px solid #8DB38F; outline-offset: 2px; }
+  .opt-edit { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
+  .icon-btn { width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--bg); cursor: pointer;
+              flex: none; color: var(--muted); font-size: 20px; line-height: 1; }
+  .icon-btn[disabled] { opacity: .35; cursor: not-allowed; }
+  .check { display: flex; align-items: center; gap: 8px; margin-top: 10px; cursor: pointer; }
+  .check input { width: 18px; height: 18px; accent-color: var(--sage); }
+
+  .opts { display: flex; flex-direction: column; gap: 8px; }
+  .opts.two { flex-direction: row; }
+  .opts.two .opt { flex: 1; }
+  .opt { position: relative; }
+  .opt span { display: flex; align-items: center; gap: 10px; padding: 13px 16px; border-radius: 18px; background: var(--bg);
+              cursor: pointer; border: 2px solid transparent; transition: background-color .15s, border-color .15s; }
+  .opt span::before { content: ''; width: 20px; height: 20px; border-radius: 50%; border: 2px solid #CDBFA9; background: #fff; flex: none; }
+  .opt.multi span::before { border-radius: 7px; }
+  .opt input:checked + span { background: var(--sage-soft); border-color: var(--sage); }
+  .opt input:checked + span::before { background: var(--sage); border-color: var(--sage); box-shadow: inset 0 0 0 3px #fff; }
+  .opts.two .opt span { justify-content: center; font-family: 'Jua', sans-serif; font-size: 21px; padding: 20px 10px; }
+
+  .done { text-align: center; padding-top: 6px; }
+  .done h3 { padding: 0; }
+  .done-mark { width: 88px; height: 88px; margin: 0 auto 16px; display: grid; place-items: center; background: var(--sage-soft);
+               border-radius: 46% 54% 50% 50% / 55% 45% 55% 45%; animation: pop .35s cubic-bezier(.2, .9, .3, 1.3); }
+
+  #toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 16px);
+           background: var(--ink); color: var(--paper); padding: 12px 22px; border-radius: 999px; opacity: 0;
+           transition: opacity .25s, transform .25s; z-index: 60; pointer-events: none; max-width: 90vw; text-align: center; }
+  #toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 40px; }
+
+  @media (max-width: 520px) {
+    .wrap { padding: 28px 14px 48px; }
+    .paper { padding: 22px 18px; }
+    .modal { padding: 28px 20px 22px; }
+    .student { gap: 10px; }
+    .sum-row { grid-template-columns: minmax(60px, 110px) 1fr 44px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="blobs" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="stamp">
+      <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#DFEBD8"/><rect x="6.5" y="8.5" width="13" height="9.5" rx="2.5" fill="none" stroke="#3F6B47" stroke-width="1.6"/><path d="M7.6 10.2l5.4 3.9 5.4-3.9" fill="none" stroke="#3F6B47" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      가정통신문 회신
+    </span>
+    <h1>목운중학교 3학년 7반<br>학부모 의견 수합</h1>
+    <p>조사를 고른 뒤 자녀 이름을 누르고, 휴대폰 번호 뒷자리로 확인하면 의견을 남길 수 있어요.</p>
+  </header>
+
+  <div class="demo" id="demoNote" hidden>
+    미리보기 모드예요. 서버가 아직 연결되지 않아 새로고침하면 내용이 처음으로 돌아가요.<br>
+    선생님 비밀번호는 <b>demo</b>, 번호 뒷자리는 <b>1234</b>로 시험해 보세요.
+  </div>
+
+  <main id="app"></main>
+
+  <footer>목운중학교 3학년 7반</footer>
+</div>
+
+<div id="modal-root"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ============================================================
+   설정: Google Apps Script 웹 앱 URL을 따옴표 안에 붙여넣으세요.
+   예) const API_URL = "https://script.google.com/macros/s/AKfy.../exec";
+   비워 두면 저장되지 않는 미리보기 모드로 열립니다.
+   ============================================================ */
+const API_URL = "";
+
+const DEMO = !API_URL;
+const TYPE_LABEL = { agree: '동의 / 미동의', choice: '선택형', text: '단답형' };
+const $ = (sel, root = document) => root.querySelector(sel);
+const app = $('#app');
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+const tokenStore = {
+  get() { try { return sessionStorage.getItem('adminToken'); } catch (e) { return null; } },
+  set(v) { try { v ? sessionStorage.setItem('adminToken', v) : sessionStorage.removeItem('adminToken'); } catch (e) {} },
+};
+const state = { surveys: [], loaded: false, editMode: false, token: tokenStore.get() };
+let routeSeq = 0;
+
+/* ---------------- 서버 통신 ---------------- */
+async function api(action, params = {}) {
+  if (DEMO) return demoApi(action, JSON.parse(JSON.stringify(params)));
+  let res, json;
+  try {
+    res = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action, ...params }) });
+  } catch (e) {
+    throw new Error('서버에 연결하지 못했어요. 인터넷 연결을 확인하고 다시 시도해 주세요.');
+  }
+  try { json = await res.json(); }
+  catch (e) { throw new Error('서버 응답을 읽지 못했어요. 잠시 후 다시 시도해 주세요.'); }
+  if (!json.ok) {
+    const err = new Error(json.error || '처리하지 못했어요. 다시 시도해 주세요.');
+    err.code = json.code;
+    throw err;
+  }
+  return json.data;
+}
+
+async function adminApi(action, params = {}) {
+  try {
+    return await api(action, { ...params, token: state.token });
+  } catch (e) {
+    if (e.code === 'AUTH') { setToken(null); state.editMode = false; }
+    throw e;
+  }
+}
+
+function setToken(t) { state.token = t; tokenStore.set(t); }
+
+/* ---------------- 화면 전환 ---------------- */
+function route(scroll) {
+  const seq = ++routeSeq;
+  const m = location.hash.match(/^#s-([\w-]+)$/);
+  document.body.classList.toggle('in-detail', !!m);
+  if (scroll) window.scrollTo(0, 0);
+  if (m) renderDetail(m[1], seq); else renderHome(seq);
+}
+window.addEventListener('hashchange', () => route(true));
+
+/* ---------------- 첫 화면 ---------------- */
+async function renderHome(seq) {
+  paintHome(!state.loaded);
+  try {
+    const list = await api('getSurveys');
+    state.surveys = list;
+    state.loaded = true;
+    if (seq === routeSeq) paintHome(false);
+  } catch (e) {
+    if (seq === routeSeq) $('#grid').innerHTML = errorHTML(e.message);
+  }
+}
+
+function paintHome(loading) {
+  app.dataset.view = 'home';
+  app.innerHTML = `
+    <div class="toolbar">
+      <h2>조사 목록</h2>
+      <div class="tools">
+        <button class="btn" data-tool="add">＋ 추가</button>
+        <button class="btn ${state.editMode ? 'on' : ''}" data-tool="edit">${state.editMode ? '편집 끝내기' : '편집'}</button>
+        <button class="btn" data-tool="reset">초기화</button>
+        ${state.token ? '<button class="btn ghost" data-tool="logout">로그아웃</button>' : ''}
+      </div>
+    </div>
+    ${state.editMode ? '<div class="notice">편집 중이에요. 바꿀 카드의 ‘수정’ 또는 ‘삭제’를 눌러 주세요.</div>' : ''}
+    <div class="grid ${state.editMode ? 'editing' : ''}" id="grid">
+      ${loading ? '<div class="skel"></div>'.repeat(3) : cardsHTML()}
+    </div>`;
+
+  app.querySelectorAll('[data-tool]').forEach(b => b.onclick = () => {
+    const t = b.dataset.tool;
+    if (t === 'add') requireLogin(() => openSurveyForm(null));
+    if (t === 'edit') requireLogin(() => { state.editMode = !state.editMode; paintHome(false); });
+    if (t === 'reset') requireLogin(openResetModal);
+    if (t === 'logout') { setToken(null); state.editMode = false; paintHome(false); toast('로그아웃했어요.'); }
+  });
+
+  const grid = $('#grid');
+  const handle = e => {
+    const card = e.target.closest('.card');
+    if (!card) return;
+    const s = state.surveys.find(x => x.id === card.dataset.id);
+    if (!s) return;
+    if (state.editMode) {
+      const act = e.target.closest('[data-act]')?.dataset.act;
+      if (act === 'edit') openSurveyForm(s);
+      if (act === 'delete') openDeleteModal(s);
+      return;
+    }
+    location.hash = 's-' + s.id;
+  };
+  grid.onclick = handle;
+  grid.onkeydown = e => {
+    if (!state.editMode && (e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('card')) { e.preventDefault(); handle(e); }
+  };
+}
+
+function cardsHTML() {
+  if (!state.surveys.length) {
+    return `<div class="empty">
+      <h3>아직 등록된 조사가 없어요</h3>
+      <p>선생님이 ‘＋ 추가’를 눌러 새 조사를 만들면 여기에 나타나요.</p>
+    </div>`;
+  }
+  return state.surveys.map(s => `
+    <article class="card ${s.status}" data-id="${esc(s.id)}" ${state.editMode ? '' : 'tabindex="0" role="link"'}>
+      <div class="card-top">${statusPill(s.status)}<span class="tag">${TYPE_LABEL[s.type] || ''}</span></div>
+      <h3>${esc(s.title)}</h3>
+      ${s.content ? `<p class="card-content">${esc(s.content)}</p>` : ''}
+      ${progressHTML(s)}
+      ${state.editMode ? `<div class="card-actions">
+        <button class="btn small" data-act="edit">수정</button>
+        <button class="btn small danger-text" data-act="delete">삭제</button>
+      </div>` : ''}
+    </article>`).join('');
+}
+
+const statusPill = st => `<span class="pill ${st === 'closed' ? 'closed' : 'open'}">${st === 'closed' ? '마감' : '진행중'}</span>`;
+
+function progressHTML(s) {
+  const pct = s.total ? Math.round(s.submitted / s.total * 100) : 0;
+  return `<div class="progress ${s.status}"><div class="bar"><i style="width:${pct}%"></i></div><span>${s.submitted} / ${s.total}명 제출</span></div>`;
+}
+
+function errorHTML(msg) {
+  return `<div class="empty"><h3>불러오지 못했어요</h3><p>${esc(msg)}</p><button class="btn" onclick="route()">다시 불러오기</button></div>`;
+}
+
+/* ---------------- 조사 상세 ---------------- */
+async function renderDetail(id, seq) {
+  if (app.dataset.view !== 'd:' + id) {
+    app.innerHTML = `<div class="detail">
+      <button class="btn ghost back" id="back">← 목록으로</button>
+      <div id="detailBody"><div class="skel"></div></div>
+    </div>`;
+    app.dataset.view = 'd:' + id;
+    $('#back').onclick = () => { location.hash = ''; };
+  }
+  try {
+    const [d, results] = await Promise.all([
+      api('getSurvey', { surveyId: id }),
+      state.token ? adminApi('getResults', { surveyId: id }).catch(() => null) : Promise.resolve(null),
+    ]);
+    if (seq === routeSeq) drawDetail(d, results);
+  } catch (e) {
+    if (seq === routeSeq) $('#detailBody').innerHTML = errorHTML(e.message);
+  }
+}
+
+function drawDetail(d, results) {
+  const s = d.survey;
+  const open = s.status === 'open';
+  const byId = results ? Object.fromEntries(results.map(r => [r.studentId, r])) : null;
+  const typeText = TYPE_LABEL[s.type] + (s.type === 'choice' && s.multiple ? ' (여러 개 선택)' : '');
+
+  $('#detailBody').innerHTML = `
+    <section class="paper detail-head">
+      <div class="card-top">${statusPill(s.status)}<span class="tag">${typeText}</span></div>
+      <h2>${esc(s.title)}</h2>
+      ${s.content ? `<p class="detail-content">${esc(s.content)}</p>` : ''}
+      ${progressHTML(s)}
+    </section>
+    ${byId ? summaryHTML(s, results, d.students.length) : ''}
+    <section class="paper">
+      <div class="list-head">
+        <h3>학생 명단</h3>
+        <p class="hint">${open ? '자녀 이름을 눌러 의견을 제출해 주세요.' : '마감된 조사라 더 이상 제출할 수 없어요.'}</p>
+      </div>
+      <ul class="students">
+        ${d.students.map(st => {
+          const r = byId && byId[st.id];
+          return `<li><button class="student" data-id="${esc(st.id)}" data-name="${esc(st.name)}" ${open ? '' : 'disabled'}>
+            <span class="sid">${esc(st.id)}</span>
+            <span class="sname">${esc(st.name)}${r ? `<span class="ans">${esc(r.display)}</span>` : ''}</span>
+            <span class="status ${st.submitted ? 'done' : 'todo'}">${st.submitted ? '제출 완료' : '미제출'}</span>
+          </button></li>`;
+        }).join('')}
+      </ul>
+      ${byId ? '' : '<div class="teacher-link"><button class="linklike" id="showResults">선생님: 응답 내용 보기</button></div>'}
+    </section>`;
+
+  $('#detailBody').querySelectorAll('.student').forEach(btn => {
+    btn.onclick = () => openSubmitModal(s, { id: btn.dataset.id, name: btn.dataset.name });
+  });
+  $('#showResults')?.addEventListener('click', () => requireLogin(() => route()));
+}
+
+function summaryHTML(s, results, total) {
+  let rows = [];
+  if (s.type === 'agree') rows = ['동의', '미동의'].map(o => [o, results.filter(r => r.answer === o).length]);
+  if (s.type === 'choice') rows = s.options.map(o => [o, results.filter(r => Array.isArray(r.answer) && r.answer.includes(o)).length]);
+  const body = rows.length
+    ? rows.map(([label, n]) => `<div class="sum-row"><span>${esc(label)}</span><div class="bar"><i style="width:${total ? n / total * 100 : 0}%"></i></div><b>${n}명</b></div>`).join('')
+    : '<p class="hint">단답형 응답은 아래 명단에서 학생별로 볼 수 있어요.</p>';
+  return `<section class="paper">
+    <div class="list-head"><h3>응답 요약</h3><p class="hint">선생님에게만 보여요</p></div>
+    ${body}
+  </section>`;
+}
+
+/* ---------------- 학부모 제출 ---------------- */
+function openSubmitModal(survey, student) {
+  const m = openModal('');
+  let pin = '';
+  const head = `<p class="muted small" style="margin:0 0 4px">${esc(student.id)}</p><h3>${esc(student.name)} 학생 학부모님</h3>`;
+
+  const askPin = () => {
+    m.set(`${head}
+      <p class="muted">본인 확인을 위해 학부모님 휴대폰 번호 <b>뒷자리 4자리</b>를 입력해 주세요.</p>
+      <form class="stack" id="pf">
+        <input class="pin-input" id="pin" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" placeholder="0000" aria-label="휴대폰 번호 뒷자리 4자리">
+        <p class="err" role="alert"></p>
+        <button class="btn primary block" type="submit">확인</button>
+      </form>`);
+    const input = $('#pin', m.el);
+    const err = $('.err', m.el);
+    input.focus();
+    input.oninput = () => { input.value = input.value.replace(/\D/g, '').slice(0, 4); err.textContent = ''; };
+    $('#pf', m.el).onsubmit = async e => {
+      e.preventDefault();
+      if (!/^\d{4}$/.test(input.value)) { err.textContent = '숫자 4자리를 입력해 주세요.'; return; }
+      const btn = $('[type=submit]', m.el);
+      busy(btn, true, '확인 중…');
+      try {
+        const r = await api('verify', { surveyId: survey.id, studentId: student.id, pin: input.value });
+        pin = input.value;
+        askAnswer(r.answer);
+      } catch (e2) {
+        err.textContent = e2.message;
+        busy(btn, false);
+        input.select();
+      }
+    };
+  };
+
+  const askAnswer = prev => {
+    let field = '';
+    if (survey.type === 'agree') {
+      field = `<div class="opts two" role="radiogroup" aria-label="동의 여부">
+        ${['동의', '미동의'].map(v => `<label class="opt"><input type="radio" name="ans" value="${v}" ${prev === v ? 'checked' : ''}><span>${v}</span></label>`).join('')}
+      </div>`;
+    } else if (survey.type === 'choice') {
+      const multi = survey.multiple;
+      const sel = Array.isArray(prev) ? prev : [];
+      field = `<p class="hint">${multi ? '해당하는 것을 모두 골라 주세요.' : '하나만 골라 주세요.'}</p>
+        <div class="opts">
+          ${survey.options.map(o => `<label class="opt ${multi ? 'multi' : ''}"><input type="${multi ? 'checkbox' : 'radio'}" name="ans" value="${esc(o)}" ${sel.includes(o) ? 'checked' : ''}><span>${esc(o)}</span></label>`).join('')}
+        </div>`;
+    } else {
+      field = `<textarea name="ans" rows="3" maxlength="500" placeholder="의견을 적어 주세요." aria-label="의견">${esc(prev || '')}</textarea>
+        <p class="hint" id="cnt" style="text-align:right;margin-top:-8px">${(prev || '').length} / 500</p>`;
+    }
+    m.set(`${head}
+      <p class="q">${esc(survey.title)}</p>
+      ${prev != null ? '<p class="note">이미 제출하신 의견이 있어요. 바꾸려면 다시 고른 뒤 ‘다시 제출하기’를 눌러 주세요.</p>' : ''}
+      <form class="stack" id="af">
+        ${field}
+        <p class="err" role="alert"></p>
+        <button class="btn primary block" type="submit">${prev != null ? '다시 제출하기' : '제출하기'}</button>
+      </form>`);
+    const form = $('#af', m.el);
+    const err = $('.err', m.el);
+    const ta = $('textarea', form);
+    if (ta) ta.oninput = () => { $('#cnt', m.el).textContent = `${ta.value.length} / 500`; };
+    form.onchange = () => { err.textContent = ''; };
+    form.onsubmit = async e => {
+      e.preventDefault();
+      let answer;
+      if (survey.type === 'text') {
+        answer = ta.value.trim();
+        if (!answer) { err.textContent = '의견을 입력해 주세요.'; return; }
+      } else if (survey.type === 'choice') {
+        answer = [...form.querySelectorAll('input[name=ans]:checked')].map(i => i.value);
+        if (!answer.length) { err.textContent = '하나 이상 골라 주세요.'; return; }
+      } else {
+        const c = form.querySelector('input[name=ans]:checked');
+        if (!c) { err.textContent = '동의 또는 미동의를 골라 주세요.'; return; }
+        answer = c.value;
+      }
+      const btn = $('[type=submit]', form);
+      busy(btn, true, '제출 중…');
+      try {
+        await api('submit', { surveyId: survey.id, studentId: student.id, pin, answer });
+        showDone();
+        route();
+      } catch (e2) {
+        err.textContent = e2.message;
+        busy(btn, false);
+      }
+    };
+  };
+
+  const showDone = () => {
+    m.set(`<div class="done">
+      <div class="done-mark"><svg width="42" height="42" viewBox="0 0 42 42" aria-hidden="true"><path d="M11 22l7 7 13-15" fill="none" stroke="#3F6B47" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h3>제출했어요</h3>
+      <p class="muted">${esc(student.name)} 학생 학부모님의 의견이 잘 전달되었어요.<br>감사합니다.</p>
+      <button class="btn primary block" data-close>닫기</button>
+    </div>`);
+    $('[data-close]', m.el).focus();
+  };
+
+  askPin();
+}
+
+/* ---------------- 선생님 확인 ---------------- */
+function requireLogin(next) {
+  if (state.token) return next();
+  const m = openModal(`
+    <h3>선생님 확인</h3>
+    <p class="muted">조사 추가, 편집, 초기화는 비밀번호를 입력해야 할 수 있어요.</p>
+    <form class="stack" id="lf">
+      <input type="password" id="pw" autocomplete="current-password" placeholder="비밀번호" aria-label="비밀번호">
+      <p class="err" role="alert"></p>
+      <button class="btn primary block" type="submit">확인</button>
+    </form>`);
+  const pw = $('#pw', m.el);
+  const err = $('.err', m.el);
+  pw.focus();
+  $('#lf', m.el).onsubmit = async e => {
+    e.preventDefault();
+    if (!pw.value) { err.textContent = '비밀번호를 입력해 주세요.'; return; }
+    const btn = $('[type=submit]', m.el);
+    busy(btn, true, '확인 중…');
+    try {
+      const r = await api('login', { password: pw.value });
+      setToken(r.token);
+      m.close();
+      toast('선생님으로 확인되었어요.');
+      if (!location.hash.startsWith('#s-')) paintHome(false);
+      next();
+    } catch (e2) {
+      err.textContent = e2.message;
+      busy(btn, false);
+      pw.select();
+    }
+  };
+}
+
+/* ---------------- 조사 추가 / 수정 ---------------- */
+function openSurveyForm(existing) {
+  const s = existing
+    ? { ...existing, options: existing.options && existing.options.length ? [...existing.options] : ['', ''] }
+    : { title: '', content: '', type: 'agree', options: ['', ''], multiple: false, status: 'open' };
+
+  const m = openModal(`
+    <h3>${existing ? '조사 수정' : '새 조사 추가'}</h3>
+    <form class="stack" id="sf" novalidate>
+      <label class="field"><span>주제</span>
+        <input type="text" name="title" maxlength="100" value="${esc(s.title)}" placeholder="예: 봄 현장체험학습 참가 동의">
+      </label>
+      <label class="field"><span>내용</span>
+        <textarea name="content" rows="5" maxlength="3000" placeholder="학부모님께 안내할 내용을 적어 주세요.">${esc(s.content)}</textarea>
+      </label>
+      <div class="field"><span>형식</span>
+        <div class="seg">
+          ${Object.entries(TYPE_LABEL).map(([v, l]) => `<label><input type="radio" name="type" value="${v}" ${s.type === v ? 'checked' : ''}><span>${l}</span></label>`).join('')}
+        </div>
+      </div>
+      <div class="field" id="choiceBox" ${s.type === 'choice' ? '' : 'hidden'}>
+        <span>선택지</span>
+        <div id="optList"></div>
+        <button type="button" class="btn small" id="addOpt">＋ 선택지 추가</button>
+        <label class="check"><input type="checkbox" name="multiple" ${s.multiple ? 'checked' : ''}> 여러 개 고를 수 있게 하기</label>
+      </div>
+      <div class="field"><span>상태</span>
+        <div class="seg">
+          <label><input type="radio" name="status" value="open" ${s.status !== 'closed' ? 'checked' : ''}><span>진행중</span></label>
+          <label><input type="radio" name="status" value="closed" ${s.status === 'closed' ? 'checked' : ''}><span>마감</span></label>
+        </div>
+      </div>
+      ${existing && existing.submitted ? `<p class="note">이미 ${existing.submitted}명이 제출했어요. 형식이나 선택지를 바꾸면 기존 응답과 맞지 않을 수 있어요.</p>` : ''}
+      <p class="err" role="alert"></p>
+      <div class="row-end">
+        <button type="button" class="btn" data-close>취소</button>
+        <button type="submit" class="btn primary">${existing ? '수정 저장' : '조사 추가'}</button>
+      </div>
+    </form>`, { wide: true });
+
+  const form = $('#sf', m.el);
+  const f = n => form.elements.namedItem(n);
+  const err = $('.err', form);
+  const optList = $('#optList', form);
+  const syncOpts = () => { s.options = [...optList.querySelectorAll('input')].map(i => i.value); };
+  const drawOpts = () => {
+    optList.innerHTML = s.options.map((o, i) => `
+      <div class="opt-edit">
+        <input type="text" maxlength="100" value="${esc(o)}" placeholder="선택지 ${i + 1}" aria-label="선택지 ${i + 1}">
+        <button type="button" class="icon-btn" data-rm="${i}" aria-label="선택지 ${i + 1} 지우기" ${s.options.length <= 2 ? 'disabled' : ''}>×</button>
+      </div>`).join('');
+  };
+  drawOpts();
+  optList.onclick = e => {
+    const b = e.target.closest('[data-rm]');
+    if (!b || b.disabled) return;
+    syncOpts();
+    s.options.splice(Number(b.dataset.rm), 1);
+    drawOpts();
+  };
+  $('#addOpt', form).onclick = () => {
+    syncOpts();
+    if (s.options.length >= 20) { err.textContent = '선택지는 20개까지 만들 수 있어요.'; return; }
+    s.options.push('');
+    drawOpts();
+    optList.lastElementChild.querySelector('input').focus();
+  };
+  form.querySelectorAll('input[name=type]').forEach(r => r.onchange = () => {
+    $('#choiceBox', form).hidden = f('type').value !== 'choice';
+  });
+  f('title').focus();
+
+  form.onsubmit = async e => {
+    e.preventDefault();
+    syncOpts();
+    const data = {
+      id: existing ? existing.id : undefined,
+      title: f('title').value.trim(),
+      content: f('content').value.trim(),
+      type: f('type').value,
+      status: f('status').value,
+      multiple: f('multiple').checked,
+    };
+    data.options = data.type === 'choice' ? s.options.map(o => o.trim()).filter(Boolean) : [];
+    if (data.type !== 'choice') data.multiple = false;
+    if (!data.title) { err.textContent = '주제를 입력해 주세요.'; f('title').focus(); return; }
+    if (data.type === 'choice' && data.options.length < 2) { err.textContent = '선택지를 2개 이상 입력해 주세요.'; return; }
+    if (data.type === 'choice' && new Set(data.options).size !== data.options.length) { err.textContent = '같은 선택지가 두 번 들어 있어요.'; return; }
+    const btn = $('[type=submit]', form);
+    busy(btn, true, '저장 중…');
+    try {
+      await adminApi(existing ? 'updateSurvey' : 'createSurvey', { survey: data });
+      m.close();
+      toast(existing ? '조사를 수정했어요.' : '조사를 추가했어요.');
+      route();
+    } catch (e2) {
+      err.textContent = e2.message;
+      busy(btn, false);
+    }
+  };
+}
+
+/* ---------------- 삭제 ---------------- */
+function openDeleteModal(s) {
+  const m = openModal(`
+    <h3>이 조사를 삭제할까요?</h3>
+    <p class="q">${esc(s.title)}</p>
+    <p class="muted">제출된 응답 ${s.submitted}건도 함께 지워지고, 되돌릴 수 없어요.</p>
+    <p class="err" role="alert"></p>
+    <div class="row-end">
+      <button class="btn" data-close>취소</button>
+      <button class="btn danger" id="del">삭제</button>
+    </div>`);
+  $('#del', m.el).onclick = async () => {
+    const btn = $('#del', m.el);
+    busy(btn, true, '삭제 중…');
+    try {
+      await adminApi('deleteSurvey', { surveyId: s.id });
+      m.close();
+      toast('조사를 삭제했어요.');
+      route();
+    } catch (e) {
+      $('.err', m.el).textContent = e.message;
+      busy(btn, false);
+    }
+  };
+}
+
+/* ---------------- 초기화 (두 번 확인) ---------------- */
+function openResetModal() {
+  const m = openModal('');
+  const step1 = () => {
+    m.set(`
+      <h3>모든 조사를 초기화할까요?</h3>
+      <p>지금까지 만든 조사 ${state.surveys.length}개와 제출된 응답이 모두 지워져요. 지운 내용은 되돌릴 수 없어요.</p>
+      <p class="muted small">학생 명단은 그대로 남아요.</p>
+      <div class="row-end">
+        <button class="btn" data-close>취소</button>
+        <button class="btn danger" id="next">계속하기</button>
+      </div>`);
+    $('#next', m.el).onclick = step2;
+  };
+  const step2 = () => {
+    m.set(`
+      <h3>한 번 더 확인할게요</h3>
+      <p>정말 초기화하려면 아래 칸에 <b>초기화</b>라고 입력해 주세요.</p>
+      <form class="stack" id="rf">
+        <input type="text" id="rc" autocomplete="off" placeholder="초기화" aria-label="확인 문구">
+        <p class="err" role="alert"></p>
+        <div class="row-end">
+          <button type="button" class="btn" data-close>취소</button>
+          <button type="submit" class="btn danger" disabled>모두 지우기</button>
+        </div>
+      </form>`);
+    const input = $('#rc', m.el);
+    const go = $('[type=submit]', m.el);
+    input.focus();
+    input.oninput = () => { go.disabled = input.value.trim() !== '초기화'; };
+    $('#rf', m.el).onsubmit = async e => {
+      e.preventDefault();
+      if (input.value.trim() !== '초기화') return;
+      busy(go, true, '지우는 중…');
+      try {
+        await adminApi('resetAll', { confirm: '초기화' });
+        m.close();
+        state.editMode = false;
+        toast('모든 조사를 지웠어요.');
+        route();
+      } catch (e2) {
+        $('.err', m.el).textContent = e2.message;
+        busy(go, false);
+      }
+    };
+  };
+  step1();
+}
+
+/* ---------------- 공용 도구 ---------------- */
+function openModal(inner, { wide = false } = {}) {
+  const root = $('#modal-root');
+  const prevFocus = document.activeElement;
+  root.innerHTML = `<div class="overlay"><div class="modal ${wide ? 'wide' : ''}" role="dialog" aria-modal="true">
+    <button class="x" aria-label="닫기">×</button><div class="modal-body">${inner}</div></div></div>`;
+  document.body.style.overflow = 'hidden';
+  const overlay = root.firstElementChild;
+  const body = $('.modal-body', overlay);
+  const onKey = e => { if (e.key === 'Escape') close(); };
+  function close() {
+    root.innerHTML = '';
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onKey);
+    if (prevFocus && document.contains(prevFocus)) prevFocus.focus();
+  }
+  document.addEventListener('keydown', onKey);
+  overlay.addEventListener('mousedown', e => { if (e.target === overlay) close(); });
+  $('.x', overlay).onclick = close;
+  body.addEventListener('click', e => { if (e.target.closest('[data-close]')) close(); });
+  return { el: body, close, set(html) { body.innerHTML = html; } };
+}
+
+function busy(btn, on, label) {
+  if (on) { btn.dataset.label = btn.textContent; btn.textContent = label; btn.disabled = true; }
+  else { btn.textContent = btn.dataset.label || btn.textContent; btn.disabled = false; }
+}
+
+let toastTimer;
+function toast(msg) {
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+/* ---------------- 미리보기 모드 (API_URL이 비어 있을 때만 사용) ---------------- */
+const demoDB = {
+  students: Array.from({ length: 30 }, (_, i) => ({ id: String(30701 + i), name: '학생 ' + String(i + 1).padStart(2, '0'), pin: '1234' })),
+  surveys: [
+    { id: 'd1', title: '봄 현장체험학습 참가 동의', content: '4월 중 현장체험학습을 진행할 예정입니다.\n자녀의 참가에 동의하시는지 골라 주세요.', type: 'agree', options: [], multiple: false, status: 'open', createdAt: '2026-03-10 09:00:00' },
+    { id: 'd2', title: '1학기 학부모 상담 희망 요일', content: '상담이 가능한 요일을 모두 골라 주세요.', type: 'choice', options: ['월요일', '화요일', '수요일', '목요일', '금요일'], multiple: true, status: 'open', createdAt: '2026-03-08 09:00:00' },
+    { id: 'd3', title: '학급 운영에 바라는 점', content: '한두 줄로 자유롭게 적어 주세요.', type: 'text', options: [], multiple: false, status: 'closed', createdAt: '2026-03-03 09:00:00' },
+  ],
+  responses: [],
+  tokens: new Set(),
+};
+[1, 2, 3, 5, 8, 13].forEach(n => demoDB.responses.push({ surveyId: 'd1', studentId: String(30700 + n), answer: n === 8 ? '미동의' : '동의' }));
+[2, 4, 7].forEach(n => demoDB.responses.push({ surveyId: 'd2', studentId: String(30700 + n), answer: ['화요일', '목요일'] }));
+[1, 6].forEach(n => demoDB.responses.push({ surveyId: 'd3', studentId: String(30700 + n), answer: '아이들이 즐겁게 지낼 수 있는 반이면 좋겠어요.' }));
+
+async function demoApi(action, p) {
+  await new Promise(r => setTimeout(r, 250));
+  const db = demoDB;
+  const fail = (msg, code) => { const e = new Error(msg); e.code = code; throw e; };
+  const findS = id => db.surveys.find(s => s.id === id) || fail('조사를 찾을 수 없습니다.');
+  const admin = () => db.tokens.has(p.token) || fail('선생님 로그인이 만료되었습니다. 다시 로그인해 주세요.', 'AUTH');
+  const pinOk = () => {
+    const st = db.students.find(s => s.id === p.studentId);
+    if (!st || p.pin !== st.pin) fail('번호가 일치하지 않습니다. (미리보기 번호는 1234)');
+    return st;
+  };
+  const count = id => db.responses.filter(r => r.surveyId === id).length;
+  switch (action) {
+    case 'getSurveys':
+      return db.surveys.map(s => ({ ...s, submitted: count(s.id), total: db.students.length }))
+        .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
+    case 'getSurvey': {
+      const s = findS(p.surveyId);
+      const done = new Set(db.responses.filter(r => r.surveyId === s.id).map(r => r.studentId));
+      return { survey: { ...s, submitted: done.size, total: db.students.length },
+               students: db.students.map(st => ({ id: st.id, name: st.name, submitted: done.has(st.id) })) };
+    }
+    case 'verify': {
+      const s = findS(p.surveyId);
+      if (s.status !== 'open') fail('마감된 조사입니다.');
+      const st = pinOk();
+      const r = db.responses.find(x => x.surveyId === s.id && x.studentId === st.id);
+      return { name: st.name, answer: r ? r.answer : null };
+    }
+    case 'submit': {
+      const s = findS(p.surveyId);
+      if (s.status !== 'open') fail('마감된 조사입니다.');
+      const st = pinOk();
+      const i = db.responses.findIndex(x => x.surveyId === s.id && x.studentId === st.id);
+      const row = { surveyId: s.id, studentId: st.id, answer: p.answer };
+      if (i >= 0) db.responses[i] = row; else db.responses.push(row);
+      return { updated: i >= 0 };
+    }
+    case 'login': {
+      if (p.password !== 'demo') fail('비밀번호가 맞지 않습니다. (미리보기 비밀번호는 demo)');
+      const t = 'demo-' + Math.random().toString(36).slice(2);
+      db.tokens.add(t);
+      return { token: t };
+    }
+    case 'createSurvey': {
+      admin();
+      const s = { ...p.survey, id: 'd' + Date.now(), createdAt: new Date().toISOString().replace('T', ' ').slice(0, 19) };
+      db.surveys.push(s);
+      return { id: s.id };
+    }
+    case 'updateSurvey': {
+      admin();
+      const i = db.surveys.findIndex(s => s.id === p.survey.id);
+      if (i < 0) fail('조사를 찾을 수 없습니다.');
+      db.surveys[i] = { ...db.surveys[i], ...p.survey };
+      return { id: p.survey.id };
+    }
+    case 'deleteSurvey':
+      admin();
+      db.surveys = db.surveys.filter(s => s.id !== p.surveyId);
+      db.responses = db.responses.filter(r => r.surveyId !== p.surveyId);
+      return {};
+    case 'resetAll':
+      admin();
+      if (p.confirm !== '초기화') fail('확인 문구가 일치하지 않습니다.');
+      db.surveys = [];
+      db.responses = [];
+      return { reset: true };
+    case 'getResults':
+      admin();
+      return db.responses.filter(r => r.surveyId === p.surveyId).map(r => ({
+        studentId: r.studentId, answer: r.answer, display: Array.isArray(r.answer) ? r.answer.join(', ') : r.answer,
+      }));
+  }
+  fail('알 수 없는 요청입니다.');
+}
+
+/* ---------------- 시작 ---------------- */
+$('#demoNote').hidden = !DEMO;
+if (DEMO) setToken(null);
+route();
+</script>
+</body>
+</html>
